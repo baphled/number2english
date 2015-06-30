@@ -15,17 +15,22 @@ class Number2English
   protected
 
   def self.word_hash(key)
-    hash = Word.hash
     numbers = key.to_s.chars
     numbers = pad_numbers(numbers)
     numbers = strip_trailing_zeroes(numbers) unless numbers.size == 1
 
-    numbers.collect do |number|
-      hash.fetch(number.to_i)
-    end.join(' ')
+    map_values(numbers).join(' ')
   end
 
   private
+
+  def self.map_values(values)
+    hash = Word.hash
+
+    values.collect do |number|
+      hash.fetch(number.to_i)
+    end
+  end
 
   def self.pad_numbers(numbers)
     padded_numbers = []
