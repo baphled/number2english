@@ -27,12 +27,17 @@ class Number2English
     numbers = pad_values(values)
 
     word_array = filter_values(numbers)
-    stripped_values = (numbers.size == 1) ? word_array : strip_trailing_zeroes(word_array)
+
+    stripped_values = sanitize_values(word_array)
 
     map_values(stripped_values).join(' ')
   end
 
   private
+
+  def self.sanitize_values(word_array)
+    (word_array.size == 1) ? word_array : strip_trailing_zeroes(word_array)
+  end
 
   def self.filter_values(numbers)
     non_zero_numbers = numbers.select { |v| v.to_i > 0 }
