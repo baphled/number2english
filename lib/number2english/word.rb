@@ -34,5 +34,6 @@ class Number2English
         1000 => 'thousand',
       }
     end
+
   end
 end
