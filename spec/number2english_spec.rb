@@ -48,6 +48,10 @@ describe Number2English do
       expect(subject.parse(420)).to eql('four hundred twenty')
     end
 
+    it 'can handle stripping our extra zeroes' do
+      expect(subject.parse(400)).to eql('four hundred')
+    end
+
     [379, 894, 653, 192, 293, 438].each do |number|
       it "can generate a word for #{number}" do
         expect do
@@ -64,6 +68,10 @@ describe Number2English do
 
     it 'can handle mapping quadruple digit number' do
       expect(subject.parse(4325)).to eql('four thousand three hundred twenty five')
+    end
+
+    it 'can round off properly' do
+      expect(subject.parse(4300)).to eql('four thousand three hundred')
     end
   end
 end
