@@ -51,6 +51,7 @@ class Number2English
       end.join(' ')
     elsif numbers.count == 3
       numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
+      numbers = (numbers.last == '0')? numbers.slice(0, (numbers.size - 1)) : numbers
       numbers.collect do |key|
         hash.fetch(key.to_i)
       end.join(' ')
