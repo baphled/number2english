@@ -1,35 +1,7 @@
-class Number2English
-  class OutOfRangeException < Exception
-  end
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
-  class Word
-    def self.hash
-      { 
-        0 => 'zero',
-        1 => 'one',
-        2 => 'two',
-        3 => 'three',
-        4 => 'four',
-        5 => 'five',
-        6 => 'six',
-        7 => 'seven',
-        8 => 'eight',
-        9 => 'nine',
-        10 => 'ten',
-        20 => 'twenty',
-        30 => 'thirty',
-        40 => 'fourty',
-        50 => 'fifty',
-        60 => 'sixty',
-        70 => 'seventy',
-        80 => 'eighty',
-        90 => 'ninety',
-        100 => 'hundred',
-        1000 => 'thousand',
-      }
-    end
-  end
-end
+require 'number2english/word'
+require 'number2english/out_of_range_exception'
 
 class Number2English
 
@@ -40,6 +12,8 @@ class Number2English
 
     word_hash(number)
   end
+
+  protected
 
   def self.word_hash(key)
     hash = Word.hash
