@@ -38,7 +38,11 @@ class Number2English
       numbers[0] = numbers[0] + '0'
       padded_numbers = numbers
     elsif numbers.count == 3
-      padded_numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
+      if (numbers[1] + numbers[2]).to_i > 20
+        padded_numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
+      else
+        padded_numbers = [numbers[0], '100', numbers[1] + numbers[2]]
+      end
     elsif numbers.count == 4
       if numbers[1].to_i > 0
         padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]

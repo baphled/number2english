@@ -78,6 +78,7 @@ describe Number2English do
     {
       379 => 'three hundred seventy nine',
       894 => 'eight hundred ninety four',
+      819 => 'eight hundred nineteen',
       653 => 'six hundred fifty three',
       192 => 'one hundred ninety two',
       293 => 'two hundred ninety three',
@@ -90,6 +91,10 @@ describe Number2English do
 
     it 'can handle numbers with zeroes after the first digit' do
       expect(subject.parse(202)).to eql('two hundred two')
+    end
+
+    it 'can handle 213' do
+      expect(subject.parse(213)).to eql('two hundred thirteen')
     end
   end
 
