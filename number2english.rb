@@ -44,27 +44,29 @@ class Number2English
   def self.word_hash(key)
     hash = Word.hash
     numbers = key.to_s.chars
+    numbers = pad_numbers(numbers)
+    numbers = strip_trailing_zeroes(numbers) unless numbers.size == 1
+
+    numbers.collect do |key|
+      hash.fetch(key.to_i)
+    end.join(' ')
+  end
+
+  private
+
+  def self.pad_numbers(numbers)
     if numbers.count == 2
       numbers[0] = numbers[0] + '0'
-      numbers.collect do |key|
-        hash.fetch(key.to_i)
-      end.join(' ')
     elsif numbers.count == 3
       numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
-      numbers = (numbers.last == '0')? numbers.slice(0, (numbers.size - 1)) : numbers
-      numbers = (numbers.last == '00')? numbers.slice(0, (numbers.size - 1)) : numbers
-      numbers.collect do |key|
-        hash.fetch(key.to_i)
-      end.join(' ')
     elsif numbers.count == 4
       numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
-      numbers = (numbers.last == '0')? numbers.slice(0, (numbers.size - 1)) : numbers
-      numbers = (numbers.last == '00')? numbers.slice(0, (numbers.size - 1)) : numbers
-      numbers.collect do |key|
-        hash.fetch(key.to_i)
-      end.join(' ')
-    else
-      hash.fetch(key)
     end
+    numbers
+  end
+
+  def self.strip_trailing_zeroes(numbers)
+    numbers = (numbers.last == '0')? numbers.slice(0, (numbers.size - 1)) : numbers
+    numbers = (numbers.last == '00')? numbers.slice(0, (numbers.size - 1)) : numbers
   end
 end
