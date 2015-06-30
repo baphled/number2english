@@ -1,17 +1,29 @@
 class Number2English
   class Padder
     def self.pad(numbers)
-      padded_numbers = []
-      if numbers.size == 2
+      padded_numbers = parse_numbers(numbers)
+      strip_added_zeroes(padded_numbers)
+    end
+
+    protected
+
+    # NOTE: We are still hdiing complexity and not testing the meat of
+    # the functionality directory but we're getting a better
+    # understanding of the functionality and it's getting easier to
+    # reason about what is going on.
+    #
+    def self.parse_numbers(numbers, padded_numbers = [])
+      case  numbers.size
+      when  2
         numbers[0] = numbers[0] + '0'
         padded_numbers = numbers
-      elsif numbers.size == 3
+      when 3
         if last_values_above_twenty?(numbers[1], numbers[2])
           padded_numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
         else
           padded_numbers = [numbers[0], '100', numbers[1] + numbers[2]]
         end
-      elsif numbers.size == 4
+      when 4
         if last_values_above_twenty?(numbers[2], numbers[3])
           if digit_above_hundred(numbers[1])
             padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
@@ -28,11 +40,7 @@ class Number2English
       else
         padded_numbers = numbers
       end
-
-      strip_added_zeroes(padded_numbers)
     end
-
-    protected
 
     def self.digit_above_hundred(number)
       (number.to_i > 0) ? true : false
