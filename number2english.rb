@@ -28,20 +28,22 @@ class Number2English
   private
 
   def self.pad_numbers(numbers)
+    padded_numbers = []
     if numbers.count == 2
       numbers[0] = numbers[0] + '0'
+      padded_numbers = numbers
     elsif numbers.count == 3
-      numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
+      padded_numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
     elsif numbers.count == 4
       if numbers[1].to_i > 0
-        numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
+        padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
       else
-        numbers = [numbers[0], '1000', numbers[1], (numbers[2] + '0'), numbers[3]]
+        padded_numbers = [numbers[0], '1000', numbers[1], (numbers[2] + '0'), numbers[3]]
       end
     end
 
-    numbers = numbers.select { |v| v.to_i > 0 }
-    numbers.empty? ? [0] : numbers
+    non_zero_numbers = padded_numbers.select { |v| v.to_i > 0 }
+    non_zero_numbers.empty? ? [0] : non_zero_numbers
   end
 
   def self.strip_trailing_zeroes(numbers)
