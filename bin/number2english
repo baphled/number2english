@@ -5,4 +5,8 @@ require 'number2english'
 
 integer = ARGV[0].to_i
 
-puts Number2English.parse(integer)
+begin
+  puts Number2English.parse(integer)
+rescue Exception => e
+  puts e.message
+end
