@@ -44,10 +44,18 @@ class Number2English
         padded_numbers = [numbers[0], '100', numbers[1] + numbers[2]]
       end
     elsif numbers.count == 4
-      if numbers[1].to_i > 0
-        padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
+      if (numbers[2] + numbers[3]).to_i > 20
+        if numbers[1].to_i > 0
+          padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
+        else
+          padded_numbers = [numbers[0], '1000', numbers[1], (numbers[2] + '0'), numbers[3]]
+        end
       else
-        padded_numbers = [numbers[0], '1000', numbers[1], (numbers[2] + '0'), numbers[3]]
+        if numbers[1].to_i > 0
+          padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + numbers[3])]
+        else
+          padded_numbers = [numbers[0], '1000', numbers[1], (numbers[2] + numbers[3])]
+        end
       end
     else
       padded_numbers = numbers

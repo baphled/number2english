@@ -114,5 +114,20 @@ describe Number2English do
     it 'can handle numbers with zeroes after the first digit' do
       expect(subject.parse(2020)).to eql('two thousand twenty')
     end
+
+    {
+      2379 => 'two thousand three hundred seventy nine',
+      8894 => 'eight thousand eight hundred ninety four',
+      1239 => 'one thousand two hundred thirty nine',
+      2312 => 'two thousand three hundred twelve',
+      7634 => 'seven thousand six hundred thirty four',
+      8919 => 'eight thousand nine hundred nineteen',
+      9120 => 'nine thousand one hundred twenty',
+    }.each_pair do |number, expected|
+      it "can generate a word for #{number}" do
+        expect(subject.parse(number)).to eql(expected)
+      end
+    end
+
   end
 end
