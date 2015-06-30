@@ -1,14 +1,13 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'number2english/word'
-require 'number2english/out_of_range_exception'
+require 'number2english/exceptions'
 
 class Number2English
 
   def self.parse number
-    if number < 0
-      raise Number2English::OutOfRangeException
-    end
+    raise Number2English::NonInteger unless number.is_a? Integer
+    raise Number2English::OutOfRangeException if number < 0 or number > 9999
 
     word_hash(number)
   end
