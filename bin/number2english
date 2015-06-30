@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..'))
+
+require 'number2english'
+
+integer = ARGV[0].to_i
+
+puts Number2English.parse(integer)
