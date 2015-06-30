@@ -90,5 +90,9 @@ describe Number2English do
     it 'can round off properly' do
       expect(subject.parse(4300)).to eql('four thousand three hundred')
     end
+
+    it 'can handle numbers with zeroes after the first digit' do
+      expect(subject.parse(2020)).to eql('two thousand twenty')
+    end
   end
 end

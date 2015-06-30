@@ -33,8 +33,13 @@ class Number2English
     elsif numbers.count == 3
       numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
     elsif numbers.count == 4
-      numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
+      if numbers[1].to_i > 0
+        numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
+      else
+        numbers = [numbers[0], '1000', numbers[1], (numbers[2] + '0'), numbers[3]]
+      end
     end
+
     numbers = numbers.select { |v| v.to_i > 0 }
     numbers.empty? ? [0] : numbers
   end
