@@ -43,12 +43,22 @@ describe Number2English do
       expect(subject.parse(22)).to eql('twenty two')
     end
 
-    [37, 84, 53, 12, 23, 48].each do |number|
+    {
+      37 => 'thirty seven',
+      84 => 'eighty four',
+      53 => 'fifty three',
+      12 => 'twelve',
+      19 => 'nineteen',
+      23 => 'twenty three',
+      48 => 'fourty eight'
+    }.each_pair do |number, expected|
       it "can generate a word for #{number}" do
-        expect do
-          subject.parse(number)
-        end.not_to raise_error
+        expect(subject.parse(number)).to eql(expected)
       end
+    end
+
+    it 'can handle numbers below 20' do
+      expect(subject.parse(12)).to eql('twelve')
     end
   end
 

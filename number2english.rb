@@ -15,7 +15,8 @@ class Number2English
   protected
 
   def self.word_hash(key)
-    numbers = pad_numbers(key.to_s.chars)
+    values = (key > 20) ? key.to_s.chars : [key]
+    numbers = pad_numbers(values)
     stripped_values = (numbers.size == 1) ? numbers : strip_trailing_zeroes(numbers)
 
     map_values(stripped_values).join(' ')
@@ -44,6 +45,8 @@ class Number2English
       else
         padded_numbers = [numbers[0], '1000', numbers[1], (numbers[2] + '0'), numbers[3]]
       end
+    else
+      padded_numbers = numbers
     end
 
     non_zero_numbers = padded_numbers.select { |v| v.to_i > 0 }
