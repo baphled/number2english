@@ -13,5 +13,7 @@ describe Number2English do
     expect{ subject.parse(-1) }.to raise_error Number2English::OutOfRangeException
   end
 
-  it 'can handle 0'
+  it 'can handle 0' do
+		expect(subject.parse(0)).to eql('zero')
+	end
 end
