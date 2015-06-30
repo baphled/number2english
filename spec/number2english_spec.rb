@@ -38,4 +38,18 @@ describe Number2English do
       end
     end
   end
+
+  context 'triple digit numbers' do
+    it 'can handle mapping triple digit number' do
+      expect(subject.parse(323)).to eql('three hundred three')
+    end
+
+    [379, 894, 653, 192, 293, 438].each do |number|
+      it "can generate a word for #{number}" do
+        expect do
+          subject.parse(number)
+        end.not_to raise_error
+      end
+    end
+  end
 end
