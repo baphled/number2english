@@ -57,5 +57,9 @@ describe Number2English do
     it 'can handle mapping quadruple digit number' do
       expect(subject.parse(4320)).to eql('four thousand three hundred twenty')
     end
+
+    it 'can handle mapping quadruple digit number' do
+      expect(subject.parse(4325)).to eql('four thousand three hundred twenty five')
+    end
   end
 end

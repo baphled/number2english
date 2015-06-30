@@ -55,7 +55,8 @@ class Number2English
         hash.fetch(key.to_i)
       end.join(' ')
     elsif numbers.count == 4
-      numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + numbers[3])]
+      numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
+      numbers = (numbers.last == '0')? numbers.slice(0, (numbers.size - 1)) : numbers
       numbers.collect do |key|
         hash.fetch(key.to_i)
       end.join(' ')
