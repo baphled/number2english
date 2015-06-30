@@ -50,7 +50,7 @@ describe Number2English do
       12 => 'twelve',
       19 => 'nineteen',
       23 => 'twenty three',
-      48 => 'fourty eight'
+      48 => 'forty eight'
     }.each_pair do |number, expected|
       it "can generate a word for #{number}" do
         expect(subject.parse(number)).to eql(expected)
