@@ -2,6 +2,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
 require 'number2english/word'
 require 'number2english/mapper'
+require 'number2english/padder'
 require 'number2english/exceptions'
 
 class Number2English
