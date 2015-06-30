@@ -20,8 +20,8 @@ class Number2English
     numbers = pad_numbers(numbers)
     numbers = strip_trailing_zeroes(numbers) unless numbers.size == 1
 
-    numbers.collect do |key|
-      hash.fetch(key.to_i)
+    numbers.collect do |number|
+      hash.fetch(number.to_i)
     end.join(' ')
   end
 
