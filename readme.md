@@ -1,13 +1,13 @@
 Write a ruby script which translate numbers into english words. It should work like this:
 
 ```ruby
-$ ruby num2english.rb 1
+$ bundle exec bin/num2english 1
 => one
 
-$ ruby num2english.rb 11
+$ bundle exec bin/num2english 11
 => eleven
 
-$ ruby num2english.rb 1001
+$ bundle exec bin/num2english 1001
 => one thousand one
 ```
 
