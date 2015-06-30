@@ -8,10 +8,7 @@ class Number2English
     protected
 
     #
-    # NOTE: We are still hiding complexity and not testing the meat of
-    # the functionality directory but we're getting a better
-    # understanding of the functionality and it's getting easier to
-    # reason about what is going on.
+    # TODO We should still expose this to a public API
     #
     def self.parse_numbers(numbers, padded_numbers = [])
       case  numbers.size
