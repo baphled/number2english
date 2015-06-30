@@ -37,28 +37,5 @@ class Number2English
         expect(subject.pad(numbers)).to eql(['1', '100'])
       end
     end
-
-    context 'a triple digit numbers' do
-      let(:numbers) { ['1', '2', '9'] }
-
-      it 'returns an array with 4 integers' do
-        expect(subject.pad(numbers)).to eql(['1', '100', '20', '9'])
-      end
-    end
-    context 'a quadruple digit numbers' do
-      let(:numbers) { ['1', '9', '7', '9'] }
-
-      it 'returns an array with 6 integers' do
-        expect(subject.pad(numbers)).to eql(['1', '1000', '9', '100', '70', '9'])
-      end
-    end
-
-    context 'a quadruple digit numbers with a low number' do
-      let(:numbers) { ['1', '9', '1', '9'] }
-
-      it 'returns an array with 6 integers' do
-        expect(subject.pad(numbers)).to eql(['1', '1000', '9', '100', '19'])
-      end
-    end
   end
 end
