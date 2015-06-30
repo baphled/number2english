@@ -12,6 +12,13 @@ class Number2English
     word_hash(number)
   end
 
+  # NOTE: Implementing methods that are private or protected suggest that the functionality doesn't belong here.
+  #
+  # We could move the below methods out but for the time being it feels premature.
+  #
+  # Having said that for improved testability and with a better understanding
+  # of how the padding algorithm would work that would be the first candidate
+
   protected
 
   def self.word_hash(key)
@@ -32,6 +39,11 @@ class Number2English
     end
   end
 
+  # TODO: This is too complex and hard to test.
+  #
+  # This could be moved into a class that handles specifically with padding the
+  # input numbers and returning them.
+  #
   def self.pad_numbers(numbers)
     padded_numbers = []
     if numbers.count == 2
