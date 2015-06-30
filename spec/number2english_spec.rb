@@ -41,7 +41,7 @@ describe Number2English do
 
   context 'triple digit numbers' do
     it 'can handle mapping triple digit number' do
-      expect(subject.parse(323)).to eql('three hundred three')
+      expect(subject.parse(323)).to eql('three hundred twenty three')
     end
 
     [379, 894, 653, 192, 293, 438].each do |number|

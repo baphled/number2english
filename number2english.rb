@@ -50,7 +50,7 @@ class Number2English
         hash.fetch(key.to_i)
       end.join(' ')
     elsif numbers.count == 3
-      numbers[1] = '100'
+      numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
       numbers.collect do |key|
         hash.fetch(key.to_i)
       end.join(' ')
