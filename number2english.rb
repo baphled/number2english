@@ -54,6 +54,11 @@ class Number2English
       numbers.collect do |key|
         hash.fetch(key.to_i)
       end.join(' ')
+    elsif numbers.count == 4
+      numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + numbers[3])]
+      numbers.collect do |key|
+        hash.fetch(key.to_i)
+      end.join(' ')
     else
       hash.fetch(key)
     end
