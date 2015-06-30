@@ -15,11 +15,10 @@ class Number2English
   protected
 
   def self.word_hash(key)
-    numbers = key.to_s.chars
-    numbers = pad_numbers(numbers)
-    numbers = strip_trailing_zeroes(numbers) unless numbers.size == 1
+    numbers = pad_numbers(key.to_s.chars)
+    stripped_values = (numbers.size == 1) ? numbers : strip_trailing_zeroes(numbers)
 
-    map_values(numbers).join(' ')
+    map_values(stripped_values).join(' ')
   end
 
   private
