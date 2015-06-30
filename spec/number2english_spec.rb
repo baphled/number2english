@@ -75,11 +75,16 @@ describe Number2English do
       expect(subject.parse(400)).to eql('four hundred')
     end
 
-    [379, 894, 653, 192, 293, 438].each do |number|
+    {
+      379 => 'three hundred seventy nine',
+      894 => 'eight hundred ninety four',
+      653 => 'six hundred fifty three',
+      192 => 'one hundred ninety two',
+      293 => 'two hundred ninety three',
+      438 => 'four hundred thirty eight'
+    }.each_pair do |number, expected|
       it "can generate a word for #{number}" do
-        expect do
-          subject.parse(number)
-        end.not_to raise_error
+        expect(subject.parse(number)).to eql(expected)
       end
     end
 
