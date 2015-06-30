@@ -72,6 +72,10 @@ describe Number2English do
         end.not_to raise_error
       end
     end
+
+    it 'can handle numbers with zeroes after the first digit' do
+      expect(subject.parse(202)).to eql('two hundred two')
+    end
   end
 
   context 'quadruple digit numbers' do

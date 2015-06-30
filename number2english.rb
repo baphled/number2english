@@ -35,7 +35,8 @@ class Number2English
     elsif numbers.count == 4
       numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
     end
-    numbers
+    numbers = numbers.select { |v| v.to_i > 0 }
+    numbers.empty? ? [0] : numbers
   end
 
   def self.strip_trailing_zeroes(numbers)
