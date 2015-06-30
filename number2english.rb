@@ -28,16 +28,10 @@ class Number2English
 
     word_array = filter_values(numbers)
 
-    stripped_values = sanitize_values(word_array)
-
-    map_values(stripped_values).join(' ')
+    map_values(word_array).join(' ')
   end
 
   private
-
-  def self.sanitize_values(word_array)
-    (word_array.size == 1) ? word_array : strip_trailing_zeroes(word_array)
-  end
 
   def self.filter_values(numbers)
     non_zero_numbers = numbers.select { |v| v.to_i > 0 }
@@ -89,10 +83,5 @@ class Number2English
 
   def self.below_twenty?(second_to_last_number, last_numbers)
     (second_to_last_number + last_numbers).to_i > 20 ? true : false
-  end
-
-  def self.strip_trailing_zeroes(numbers)
-    numbers = (numbers.last == '0')? numbers.slice(0, (numbers.size - 1)) : numbers
-    numbers = (numbers.last == '00')? numbers.slice(0, (numbers.size - 1)) : numbers
   end
 end
