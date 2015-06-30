@@ -5,8 +5,8 @@ class Number2English
     subject { described_class }
 
     it 'returns an array with one integer' do
-      numbers = ['1']
-      expect(subject.pad(numbers)).to eql(['1'])
+      numbers = ['0']
+      expect(subject.pad(numbers)).to eql(['0'])
     end
 
     it 'takes numbers under 20 as a single integer' do
@@ -31,13 +31,13 @@ class Number2English
     end
 
     context 'a tripe digit numbers with a low number' do
-      let(:numbers) { ['1', '0', '9'] }
+      let(:numbers) { ['1', '0', '0'] }
 
-      it 'returns an array with 4 integers' do
-        expect(subject.pad(numbers)).to eql(['1', '100', '09'])
+      it 'returns an array with 2 integers' do
+        expect(subject.pad(numbers)).to eql(['1', '100'])
       end
-
     end
+
     context 'a triple digit numbers' do
       let(:numbers) { ['1', '2', '9'] }
 
