@@ -62,12 +62,12 @@ describe Number2English do
   end
 
   context 'quadruple digit numbers' do
-    it 'can handle stripping our extra zeroes' do
-      expect(subject.parse(4320)).to eql('four thousand three hundred twenty')
-    end
-
     it 'can handle mapping quadruple digit number' do
       expect(subject.parse(4325)).to eql('four thousand three hundred twenty five')
+    end
+
+    it 'can handle stripping our extra zeroes' do
+      expect(subject.parse(4320)).to eql('four thousand three hundred twenty')
     end
 
     it 'can round off properly' do
