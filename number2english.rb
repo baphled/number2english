@@ -1,7 +1,12 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
+require 'number2english/numbers'
+require 'number2english/hundreds'
+require 'number2english/thousands'
+
 require 'number2english/word'
 require 'number2english/mapper'
+
 require 'number2english/padder'
 require 'number2english/exceptions'
 
