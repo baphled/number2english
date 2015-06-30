@@ -24,12 +24,18 @@ class Number2English
   def self.word_hash(key)
     values = (key > 20) ? key.to_s.chars : [key]
     numbers = pad_numbers(values)
-    stripped_values = (numbers.size == 1) ? numbers : strip_trailing_zeroes(numbers)
+    word_array = filter_values(numbers)
+    stripped_values = (numbers.size == 1) ? word_array : strip_trailing_zeroes(word_array)
 
     map_values(stripped_values).join(' ')
   end
 
   private
+
+  def self.filter_values(numbers)
+    non_zero_numbers = numbers.select { |v| v.to_i > 0 }
+    non_zero_numbers.empty? ? [0] : non_zero_numbers
+  end
 
   def self.map_values(values)
     hash = Word.hash
@@ -50,13 +56,13 @@ class Number2English
       numbers[0] = numbers[0] + '0'
       padded_numbers = numbers
     elsif numbers.count == 3
-      if (numbers[1] + numbers[2]).to_i > 20
+      if below_twenty?(numbers[1], numbers[2])
         padded_numbers = [numbers[0], '100', (numbers[1] + '0') , numbers[2]]
       else
         padded_numbers = [numbers[0], '100', numbers[1] + numbers[2]]
       end
     elsif numbers.count == 4
-      if (numbers[2] + numbers[3]).to_i > 20
+      if below_twenty?(numbers[2], numbers[3])
         if numbers[1].to_i > 0
           padded_numbers = [numbers[0], '1000', numbers[1], '100', (numbers[2] + '0'), numbers[3]]
         else
@@ -72,9 +78,10 @@ class Number2English
     else
       padded_numbers = numbers
     end
+  end
 
-    non_zero_numbers = padded_numbers.select { |v| v.to_i > 0 }
-    non_zero_numbers.empty? ? [0] : non_zero_numbers
+  def self.below_twenty?(second_to_last_number, last_numbers)
+    (second_to_last_number + last_numbers).to_i > 20 ? true : false
   end
 
   def self.strip_trailing_zeroes(numbers)
