@@ -23,7 +23,9 @@ class Number2English
 
   def self.word_hash(key)
     values = (key > 20) ? key.to_s.chars : [key]
-    numbers = pad_numbers(values)
+
+    numbers = pad_values(values)
+
     word_array = filter_values(numbers)
     stripped_values = (numbers.size == 1) ? word_array : strip_trailing_zeroes(word_array)
 
@@ -50,7 +52,7 @@ class Number2English
   # This could be moved into a class that handles specifically with padding the
   # input numbers and returning them.
   #
-  def self.pad_numbers(numbers)
+  def self.pad_values(numbers)
     padded_numbers = []
     if numbers.count == 2
       numbers[0] = numbers[0] + '0'
